@@ -1,0 +1,7 @@
+.idea
+node_modules
+libs
+desktop.bundles/*/*.*
+!desktop.bundles/*/*.bemdecl.js
+!desktop.bundles/*/*-controller.js
+!desktop.bundles/*/*-view.jade
