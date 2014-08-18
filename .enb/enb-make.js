@@ -1,5 +1,6 @@
 module.exports = function(config) {
     config.node('desktop.bundles/compare');
+    config.node('desktop.bundles/frameworks');
 
     config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
         nodeConfig.addTechs([
@@ -8,18 +9,18 @@ module.exports = function(config) {
             new (require('enb/techs/deps-old'))(),
             new (require('enb/techs/files'))(),
             new (require('enb/techs/js'))(),
-            new (require('enb/techs/css'))()
+            new (require('enb/techs/css-stylus-with-nib'))()
         ]);
 
         nodeConfig.addTargets([
-            '_?.js', '_?.css'
+            '?.js', '_?.js', '?.css', '_?.css'
         ]);
     });
 
     config.mode('development', function() {
         config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
             nodeConfig.addTechs([
-                new (require('enb/techs/file-copy'))({ sourceTarget: '?.js', destTarget: '_?.js' }),
+                new (require('enb/techs/js-expand-includes'))({ sourceTarget: '?.js', destTarget: '_?.js' }),
                 new (require('enb/techs/file-copy'))({ sourceTarget: '?.css', destTarget: '_?.css' })
             ]);
         });

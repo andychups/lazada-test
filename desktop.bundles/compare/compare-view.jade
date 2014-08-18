@@ -2,3 +2,17 @@
    User: andychups
    Date: 18.08.14
 
+doctype html
+html
+    head
+        title Lazada &ndash; compare products
+        link(rel="stylesheet", href="/static/compare/_compare.css")
+    body
+        h1 Lazada &ndash; compare products
+
+        form(action="/api/product", method="get")
+            input(type=text, value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
+            input(type=submit)
+
+        script(src="/static/frameworks/_frameworks.js")
+        script(src="/static/compare/_compare.js")
