@@ -2,17 +2,22 @@
    User: andychups
    Date: 18.08.14
 
-doctype html
-html
-    head
-        title Lazada &ndash; compare products
-        link(rel="stylesheet", href="/static/compare/_compare.css")
-    body
-        h1 Lazada &ndash; compare products
+extends ../../layouts/layout/layout
 
-        form(action="/api/product", method="get")
-            input(type=text, value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
-            input(type=submit)
+block css
+    link(rel="stylesheet", href="/static/compare/_compare.css")
 
-        script(src="/static/frameworks/_frameworks.js")
-        script(src="/static/compare/_compare.js")
+
+block js
+    script(src="/static/common/_common.js")
+    script(src="/static/compare/_compare.js")
+
+
+block content
+    h1 Lazada &ndash; compare products
+
+    form(action="/api/product", method="get").js-get-product
+        input(type="text", name="url", value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
+        input(type="submit")
+
+    div.js-proto

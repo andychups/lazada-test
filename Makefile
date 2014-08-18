@@ -21,3 +21,6 @@ $(NODE_MODULES)::
 $(BOWER)::
 	bower install
 
+.PHONY: test
+test::
+	echo "testihuiesti"

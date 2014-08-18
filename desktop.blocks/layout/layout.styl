@@ -1,5 +1,37 @@
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/static/common/fonts/ptc55f_w.eot');
+    src: local('PT Sans'), url('/static/common/fonts/ptc55f_w.woff') format('woff'), url('/static/common/fonts/ptc55f_w.ttf') format('truetype'), url('/static/common/fonts/ptc55f_w.svg#ptcans-Regular') format('svg');
+}
+
+html {overflow-y: scroll;}
+html, body {margin: 0; padding: 0;}
+
 .layout {
     margin: 0;
     padding: 20px;
-    background: #ffffff;
+    font: normal 14px/1.55 Arial, Tahoma, Verdana, 'sans-serif';
+    background: #C2D1C7;
+    color: #071724;
 }
+
+a {color: #b7e454;}
+a:hover {color: #c8f662; text-decoration: none;}
+
+input, select, textarea {font: normal 11px Arial, Tahoma, 'sans-serif';}
+
+hr {height: 1px; border-width: 0; background: #d9d9d9; color: #d9d9d9;}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 0.3em 0;
+    font-family: 'PT Sans', Arial, 'sans-serif';
+    color: #071724;
+    cursor: default;
+}
+
+h1 {font-size: 30px;}
+h2 {font-size: 23px;}
+h3 {font-size: 20px;}
+h4 {font-size: 18px;}
+h5 {font-size: 15px;}
+h6 {font-size: 13px;}

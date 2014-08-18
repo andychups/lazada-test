@@ -1,0 +1,14 @@
+//-
+   User: andychups
+   Date: 18.08.14
+
+extends ../../layouts/layout/layout
+
+block css
+    link(rel="stylesheet", href="/static/common/_common.css")
+
+block content
+    h1 Ooops
+    h2 Something went wrong...
+    h3=error.code
+    pre=error.message

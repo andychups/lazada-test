@@ -1,3 +1,4 @@
 exports.deps = [
-    { "block": "layout" }
+    { "block": "layout" },
+    { "block": "app" }
 ];

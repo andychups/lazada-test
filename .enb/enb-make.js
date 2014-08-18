@@ -1,6 +1,6 @@
 module.exports = function(config) {
     config.node('desktop.bundles/compare');
-    config.node('desktop.bundles/frameworks');
+    config.node('desktop.bundles/common');
 
     config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
         nodeConfig.addTechs([
