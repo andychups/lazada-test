@@ -10,12 +10,18 @@ modules.define('listView', ['notify', 'list', 'templater'], function (provide, n
     listView._$context = $('.js-compare-list');
     listView._$domView = $('.js-compare-list-view');
     listView._templateName = 'compare-list';
+    listView._ajaxRequestProgress = false;
 
     listView._$context.on('click', '.js-list-view__grab', function (e) {
         var $el = $(this),
             $form = $el.closest('form');
 
-        $('.js-proto').html('Loading...');
+        if (listView._ajaxRequestProgress) {
+            return false;
+        }
+
+        listView._ajaxRequestProgress = true;
+        notify.send('Loading...');
 
         $.ajax({
             'dataType': "json",
@@ -24,9 +30,13 @@ modules.define('listView', ['notify', 'list', 'templater'], function (provide, n
         })
         .done(function (productData) {
             listView.addProduct(productData.data);
+            notify.send('Complete');
         })
         .fail(function (err) {
-            console.log(err);
+            notify.send(JSON.stringify(err));
+        })
+        .always(function () {
+            listView._ajaxRequestProgress = false;
         });
 
         e.preventDefault();
@@ -39,13 +49,10 @@ modules.define('listView', ['notify', 'list', 'templater'], function (provide, n
         } else {
             notify.send('Product already in list');
         }
-
-        $('.js-proto').html(JSON.stringify(data));
     };
 
     listView.getViewOrientedData = function () {
-        var temp = null,
-            result = [],
+        var result = [],
             spec = list.getGeneralSpecificationData(),
             productsData = list.getProductsData(),
             listId = list.getProductsId();
@@ -68,7 +75,6 @@ modules.define('listView', ['notify', 'list', 'templater'], function (provide, n
     };
 
     listView.updateView = function () {
-        console.log(this.getViewOrientedData());
         listView._$domView.html(templater.render(this._templateName, this.getViewOrientedData()));
     };
 

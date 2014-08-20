@@ -7,8 +7,10 @@
 modules.define('notify', function (provide) {
     var notify = {};
 
+    notify._placeholder = $('.js-notify');
+
     notify.send = function (message) {
-        alert(message);
+        notify._placeholder.text(message);
     };
 
     provide(notify);

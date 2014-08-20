@@ -2,15 +2,14 @@
    User: andychups
    Date: 20.08.14
 
-table(border="1")
-    tbody
-        each specItem in spec.list
-            tr
-                td(data-id=specItem.id)= specItem.title
-                each product in data
-                    td
-                        - var productDescOfCol = product[specItem.id] && product[specItem.id].desc
-                        if (productDescOfCol)
-                            span=productDescOfCol
-                        else
-                            span &mdash;
+table.compare-list__table
+    each specItem in spec.list
+        tr.compare-list__line
+            td.compare-list__cell.compare-list__cell_position_first(data-id=specItem.id)= specItem.title
+            each product, index in data
+                td.compare-list__cell
+                    - var productDescOfCol = product[specItem.id] && product[specItem.id].desc
+                    if (productDescOfCol)
+                        span=productDescOfCol
+                    else
+                        span &mdash;

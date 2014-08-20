@@ -1,3 +1,60 @@
 .compare-list {
 
+    &__send {
+        margin-left: 20px;
+        border-bottom: 1px dotted;
+        cursor: pointer;
+
+        &:hover {
+            border: 0;
+        }
+    }
+
+    &__input {
+        padding: 5px;
+        font-size: 12px;
+        width: 400px;
+        border: 1px solid #91ACC2;
+
+        &:hover {
+            border: 1px solid #4D695E;
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 5px #fff;
+        }
+    }
+
+    &__table {
+        margin: 15px 0;
+        border-top: 1px solid #4A5864;
+        border-collapse: collapse;
+    }
+
+    &__cell {
+        padding: 5px;
+
+        &_position_first {
+            background: #3F444D;
+            font-weight: bold;
+            border-right: 1px solid #000000;
+        }
+    }
+
+    &__line {
+        cursor: default;
+        background: #4A5864;
+        border-bottom: 1px solid #000000;
+
+        &:hover {
+            background: #4A5864;
+            color: #91ACC2;
+        }
+    }
+
+    &__view {
+        position: relative;
+        min-width: 300px;
+        min-height: 300px;
+    }
 }

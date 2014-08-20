@@ -17,14 +17,11 @@ block js
 block content
     h1 Lazada &ndash; compare products
 
-    .js-compare-list
+    .compare-list.js-compare-list
         form(action="/api/product", method="get")
-            input(type="text", name="url", value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
-            span.js-list-view__grab Send
+            input(type="text", name="url", value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html").compare-list__input
+            span.js-list-view__grab.compare-list__send Add product
 
-        form(action="/api/product", method="get")
-            input(type="text", name="url", value="http://www.lazada.vn/apple-iphone-5c-retina-4-8mp-32gb-vang-106908.html")
-            span.js-list-view__grab Send
-        .js-compare-list-view
+        .notify.js-notify Status here
 
-    .js-proto
+        .compare-list__view.js-compare-list-view

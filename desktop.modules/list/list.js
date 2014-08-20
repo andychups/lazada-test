@@ -51,6 +51,7 @@ modules.define('list', function (provide) {
 
         list._data[productData.productId] = productData.data;
         list._dataID.push(productData.productId);
+
         list._extractGeneralSpecification();
 
         return true;
