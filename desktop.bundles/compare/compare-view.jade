@@ -10,14 +10,21 @@ block css
 
 block js
     script(src="/static/common/_common.js")
+    script(src="/static/compare/compare.jade.js")
     script(src="/static/compare/_compare.js")
 
 
 block content
     h1 Lazada &ndash; compare products
 
-    form(action="/api/product", method="get").js-get-product
-        input(type="text", name="url", value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
-        input(type="submit")
+    .js-compare-list
+        form(action="/api/product", method="get")
+            input(type="text", name="url", value="http://www.lazada.vn/nokia-105-man-hinh-mau-14-xanh-76651.html")
+            span.js-list-view__grab Send
 
-    div.js-proto
+        form(action="/api/product", method="get")
+            input(type="text", name="url", value="http://www.lazada.vn/apple-iphone-5c-retina-4-8mp-32gb-vang-106908.html")
+            span.js-list-view__grab Send
+        .js-compare-list-view
+
+    .js-proto

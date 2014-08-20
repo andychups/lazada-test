@@ -55,20 +55,26 @@ api.get = function (paramUrl) {
 function parseContent(notParsedData) {
     var promise = Vow.promise();
     var result = [];
+    var SKU = null;
 
     try {
         $(notParsedData).find('#productSpecifications .prd-attributes tr').each(function (i, elem) {
             var $line = $(this).find('th, td'),
-                title = $line.eq(0).text().trim();
+                title = $line.eq(0).text().trim(),
+                desc = $line.eq(1).text().trim();
+
+            if (title == 'SKU') {
+                SKU = desc.replace(/\s/gi, '').toLowerCase();
+            }
 
             result.push({
-                'id': md5.digest_s(title.replace(/\s/gi, '')),
+                'id': md5.digest_s(title.replace(/\s/gi, '').toLowerCase()),
                 'title': title,
-                'desc': $line.eq(1).text().trim()
+                'desc': desc
             });
         });
 
-        promise.fulfill(result);
+        promise.fulfill({'productId': SKU, 'data': result});
     } catch (err) {
         promise.reject(err);
     }

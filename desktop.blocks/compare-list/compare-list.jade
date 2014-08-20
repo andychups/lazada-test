@@ -1,0 +1,16 @@
+//-
+   User: andychups
+   Date: 20.08.14
+
+table(border="1")
+    tbody
+        each specItem in spec.list
+            tr
+                td(data-id=specItem.id)= specItem.title
+                each product in data
+                    td
+                        - var productDescOfCol = product[specItem.id] && product[specItem.id].desc
+                        if (productDescOfCol)
+                            span=productDescOfCol
+                        else
+                            span &mdash;

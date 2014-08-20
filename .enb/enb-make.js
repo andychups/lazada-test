@@ -9,11 +9,12 @@ module.exports = function(config) {
             new (require('enb/techs/deps-old'))(),
             new (require('enb/techs/files'))(),
             new (require('enb/techs/js'))(),
-            new (require('enb/techs/css-stylus-with-nib'))()
+            new (require('enb/techs/css-stylus-with-nib'))(),
+            new (require('../.enb/techs/jade-client'))()
         ]);
 
         nodeConfig.addTargets([
-            '?.js', '_?.js', '?.css', '_?.css'
+            '?.js', '_?.js', '?.css', '_?.css', '?.jade.js'
         ]);
     });
 
@@ -38,7 +39,8 @@ module.exports = function(config) {
 
 function getLevels(config) {
     return [
-        'desktop.blocks'
+        'desktop.blocks',
+        'desktop.modules'
     ].map(function(level) {
         return config.resolvePath(level);
     });
