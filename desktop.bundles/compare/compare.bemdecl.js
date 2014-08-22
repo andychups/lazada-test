@@ -7,5 +7,6 @@ exports.deps = [
     { "block": "grabber" },
     { "block": "list" },
     { "block": "listView" },
-    { "block": "notify" }
+    { "block": "notify" },
+    { "block": "react" }
 ];
