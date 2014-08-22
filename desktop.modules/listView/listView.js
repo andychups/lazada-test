@@ -4,11 +4,12 @@
  * @author andychups <andychups@yandex-team.ru>
  */
 
-modules.define('listView', ['notify', 'list', 'templater'], function (provide, notify, list, templater) {
+modules.define('listView', ['notify', 'list', 'templater', 'CompareList'], function (provide, notify, list, templater, CompareList) {
     var listView = {};
 
     listView._$context = $('.js-compare-list');
     listView._$domView = $('.js-compare-list-view');
+    listView._view = React.renderComponent(CompareList(), listView._$domView[0]);
     listView._templateName = 'compare-list';
     listView._ajaxRequestProgress = false;
 
@@ -75,7 +76,8 @@ modules.define('listView', ['notify', 'list', 'templater'], function (provide, n
     };
 
     listView.updateView = function () {
-        listView._$domView.html(templater.render(this._templateName, this.getViewOrientedData()));
+        listView._view.setProps(this.getViewOrientedData());
+        //listView._$domView.html(templater.render(this._templateName, this.getViewOrientedData()));
     };
 
     provide(listView);
